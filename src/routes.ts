@@ -8,6 +8,10 @@ const route = Router();
 //index, show, create, update, delete
 route.get('/items', ItemsController.index);
 
+route.get('/', (req, res) => {
+  res.send('wellcome');
+});
+
 route.get('/points', PointsController.index)
 route.get('/points/:id', PointsController.show)
 route.post('/points', PointsController.create);
