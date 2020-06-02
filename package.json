@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npx ts-node dist/src/server.js",
-    "build": "npx tsc -p .",
+    "start": "ts-node src/server.ts",
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "knex:seed": "knex --knexfile knexfile.ts seed:run",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
@@ -15,7 +14,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.1",
-    "sqlite3": "^4.2.0"
+    "sqlite3": "^4.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
@@ -23,8 +24,6 @@
     "@types/mongoose": "^5.7.21",
     "@types/morgan": "^1.9.0",
     "morgan": "^1.10.0",
-    "ts-node": "^8.10.2",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.9.3"
+    "ts-node-dev": "^1.0.0-pre.44"
   }
 }
