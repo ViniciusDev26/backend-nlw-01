@@ -5,10 +5,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node build/server.js",
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "knex:seed": "knex --knexfile knexfile.ts seed:run",
-    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
+    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
+
+    "start": "yarn build && yarn knex:migrate-production && yarn knex:seed-production && node build/src/server.js",
+    "knex:migrate-production": "knex --knexfile build/knexfile.js migrate:latest --env production",
+    "knex:seed-production": "knex --knexfile build/knexfile.js seed:run --env production"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,9 +25,10 @@
     "@types/express": "^4.17.6",
     "@types/mongoose": "^5.7.21",
     "@types/morgan": "^1.9.0",
+    "@types/node": "^14.0.10",
     "morgan": "^1.10.0",
-    "ts-node-dev": "^1.0.0-pre.44",
     "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.9.3"
   }
 }
